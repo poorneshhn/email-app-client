@@ -1,0 +1,25 @@
+.profile {
+  min-width: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  margin-right: 0.1rem;
+}
+
+.profileName {
+  margin: 0;
+  padding: 0;
+}
+.profileImageContainer {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.right {
+  display: flex;
+  gap: 0.2rem;
+}

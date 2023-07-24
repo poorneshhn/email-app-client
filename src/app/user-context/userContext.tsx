@@ -1,12 +1,26 @@
 "use client";
-import React, { createContext, useState } from "react";
+import { isLoggedIn } from "@/component/utils/userUtils";
+import React, { createContext, Dispatch, useState } from "react";
+import { setCurrentUser } from "../redux/slices/authSlice";
+import { store } from "../redux/store";
 
-export const DataContext = createContext<{}>({});
-const UserContext = ({ children }: { children: React.ReactNode }) => {
-  const [userHeader, setUserHeader] = useState({});
-
+export const DataContext = createContext<{
+  user: User;
+  setUser: Dispatch<any> | null;
+}>({ user: {}, setUser: null });
+const UserContext = ({
+  userObj,
+  children,
+}: {
+  userObj: any;
+  children: React.ReactNode;
+}) => {
+  const [user, setUser] = useState(userObj);
+  if (isLoggedIn(userObj)) {
+    store.dispatch(setCurrentUser(user));
+  }
   return (
-    <DataContext.Provider value={{ userHeader, setUserHeader }}>
+    <DataContext.Provider value={{ user, setUser }}>
       {children}
     </DataContext.Provider>
   );

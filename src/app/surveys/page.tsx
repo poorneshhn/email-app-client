@@ -4,7 +4,7 @@ const Surveys = () => {
   const arr = ["hello", "one", "two", "three"];
   return (
     <main>
-      <h2>this is surveys route</h2>
+      <h2>Your surveys</h2>
       <section>
         <ul>
           {arr.map((item) => {

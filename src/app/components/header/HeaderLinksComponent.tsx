@@ -1,31 +1,24 @@
 "use client";
 
-import { isEmpty } from "@/component/utils/utils";
-import axios from "axios";
-import { useRouter } from "next/navigation";
+import { isLoggedIn } from "@/component/utils/userUtils";
+import { isEmptyJSON } from "@/component/utils/utils";
 import React from "react";
+import { useAppSelector } from "../../custom-hooks/typedReactReduxHooks";
 
-interface HeaderLinksProps {
-  userCookie: string;
-}
-const HeaderLinksComponent: React.FC<HeaderLinksProps> = ({ userCookie }) => {
-  const router = useRouter();
-  const logout = async () => {
-    await axios.get("/api/logout");
-    router.refresh();
-  };
+import HeaderLinksLoggedIn from "./HeaderLinksLoggedIn";
+
+const HeaderLinksComponent: React.FC = () => {
+  const currentUser = useAppSelector((state) => state.auth.user);
 
   return (
     <div>
       <ul className="right">
-        {isEmpty(userCookie) ? (
+        {!isLoggedIn(currentUser) ? (
           <li>
             <a href="/auth/google">Login with google</a>
           </li>
         ) : (
-          <li>
-            <a onClick={logout}>Logout</a>
-          </li>
+          <HeaderLinksLoggedIn />
         )}
       </ul>
     </div>

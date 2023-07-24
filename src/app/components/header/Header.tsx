@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { getCookie } from "@/component/utils/userUtils";
 import HeaderLinksComponent from "./HeaderLinksComponent";
-import { isEmpty } from "@/component/utils/utils";
+import { isLoggedIn } from "@/component/utils/userUtils";
 
-function Header() {
-  const userCookie = getCookie("userID");
+function Header({ user }: { user: Partial<User> }) {
   return (
     <nav>
       <div className="nav-wrapper">
         <Link
           prefetch={false}
-          href={isEmpty(userCookie) ? "/" : "/surveys"}
+          href={isLoggedIn(user) ? "/" : "/surveys"}
           className="left brand-logo"
         >
           App Logo
         </Link>
-        <HeaderLinksComponent userCookie={userCookie} />
+        <HeaderLinksComponent />
       </div>
     </nav>
   );

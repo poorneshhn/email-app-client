@@ -1,10 +1,9 @@
-import { cookies } from "next/headers";
+import { isEmptyJSON } from "./utils";
 
-export const getCookie = (name: string): string => {
-  const cookieStore = cookies();
-  let cookieValue = cookieStore.get(name);
-  if (cookieValue) {
-    return JSON.parse(cookieValue.value) || "";
+export const isLoggedIn = (user: User): boolean => {
+  if (!isEmptyJSON(user) && "googleID" in user) {
+    return true;
   }
-  return "";
+
+  return false;
 };
