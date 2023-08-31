@@ -1,7 +1,6 @@
 "use client";
 
 import { isLoggedIn } from "@/component/utils/userUtils";
-import { isEmptyJSON } from "@/component/utils/utils";
 import React from "react";
 import { useAppSelector } from "../../custom-hooks/typedReactReduxHooks";
 

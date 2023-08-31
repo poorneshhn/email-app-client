@@ -1,6 +1,6 @@
+import { useAppDispatch } from "@/component/custom-hooks/typedReactReduxHooks";
+import { handleToken } from "@/component/redux/slices/paymentSlice";
 import StripeCheckout, { Token } from "react-stripe-checkout";
-import { useAppDispatch } from "../../custom-hooks/typedReactReduxHooks";
-import { handleToken } from "../../redux/slices/paymentSlice";
 
 const Payment = () => {
   const dispatch = useAppDispatch();

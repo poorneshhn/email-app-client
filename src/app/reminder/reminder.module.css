@@ -1,0 +1,18 @@
+.addButtonContainer,
+.submitButtonContainer {
+  display: flex;
+}
+.addButtonContainer {
+  justify-content: flex-end;
+}
+
+.submitButtonContainer {
+  justify-content: center;
+}
+
+.headersContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(188, 223, 223);
+}

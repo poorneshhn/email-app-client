@@ -1,0 +1,15 @@
+.allReminders {
+  background-color: rgb(188, 223, 223);
+  min-height: 50vh;
+  padding: 1rem 2rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.eachListItem {
+  background-color: #ee6e73;
+  padding: 0 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+}

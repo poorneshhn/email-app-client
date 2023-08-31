@@ -1,14 +1,12 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Providers from "./redux/provider";
-// @ts-ignore
 import "materialize-css/dist/css/materialize.min.css";
-import UserContext from "./user-context/userContext";
-import Header from "./components/header/Header";
 import { cookies } from "next/headers";
 import { API } from "../contants/urlConstants";
-import { store } from "./redux/store";
-import { setCurrentUser } from "./redux/slices/authSlice";
+import ClientLevel from "../components/clientLevel/ClientLevel";
+import Header from "../components/header/Header";
+import Providers from "../redux/provider";
+import { isLoggedIn } from "../utils/userUtils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +18,7 @@ export const metadata = {
 
 const getUserDetails = async () => {
   try {
-    let data = await fetch(API + "/api/user", {
+    let data = await fetch(API + "/user", {
       headers: { Cookie: cookies().toString() },
     });
     let strData = await data.text();
@@ -41,13 +39,25 @@ export default async function RootLayout({
   const user = await getUserDetails();
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+      </head>
       <body className={inter.className}>
-        <UserContext userObj={user}>
+        <ClientLevel userObj={user}>
           <Providers>
-            <Header user={user} />
-            <div className="container">{children}</div>
+            <Header />
+            <div className="container">
+              {isLoggedIn(user) ? (
+                children
+              ) : (
+                <div className="login-text">Please login to continue</div>
+              )}
+            </div>
           </Providers>
-        </UserContext>
+        </ClientLevel>
       </body>
     </html>
   );

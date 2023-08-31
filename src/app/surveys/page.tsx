@@ -1,16 +1,15 @@
+import Link from "next/link";
 import React from "react";
 
 const Surveys = () => {
-  const arr = ["hello", "one", "two", "three"];
   return (
     <main>
-      <h2>Your surveys</h2>
+      <h2>Development in progress</h2>
       <section>
-        <ul>
-          {arr.map((item) => {
-            return <li key={item}>{item}</li>;
-          })}
-        </ul>
+        <p>
+          Meanwhile checkout our <Link href={"/reminder"}>Reminder emails</Link>{" "}
+          feature. Its completely free of charge.
+        </p>
       </section>
     </main>
   );

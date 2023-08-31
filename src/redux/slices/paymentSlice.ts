@@ -27,7 +27,7 @@ export const handleToken =
   (token: Token) =>
   async (dispatch: Dispatch<any>, getState: () => RootState) => {
     try {
-      const { data } = await axiosInstance.post("/api/stripe", token);
+      const { data } = await axiosInstance.post("/stripe", token);
       dispatch(setCurrentUser(data));
     } catch (error) {}
   };

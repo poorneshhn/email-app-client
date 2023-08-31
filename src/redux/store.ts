@@ -3,12 +3,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./slices/authSlice";
 import paymentSlice from "./slices/paymentSlice";
+import reminderSlice from "./slices/reminderSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
     payment: paymentSlice,
-    // comments: commentsReducer,
+    reminder: reminderSlice,
     // users: usersReducer,
   },
 });
