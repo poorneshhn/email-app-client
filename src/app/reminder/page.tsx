@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ReminderClientComponent from "./ReminderClientComponent";
 
-export default function Reminder() {
+export default async function Reminder() {
   const year = new Date().getFullYear();
   return (
     <main>
