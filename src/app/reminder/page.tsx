@@ -21,9 +21,9 @@ export default async function Reminder() {
         </p>
         <h4>
           Check all your reminders{" "}
-          <Link className="link" href={"/reminder/all"}>
+          <a className="link" href={"/reminder/all"}>
             here
-          </Link>
+          </a>
         </h4>
         <div>
           <ReminderClientComponent />

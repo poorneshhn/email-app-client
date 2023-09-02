@@ -5,7 +5,7 @@ import React from "react";
 import { useAppSelector } from "../../custom-hooks/typedReactReduxHooks";
 
 import HeaderLinksLoggedIn from "./HeaderLinksLoggedIn";
-import { AUTH } from "@/component/contants/urlConstants";
+import { API } from "@/component/contants/urlConstants";
 
 const HeaderLinksComponent: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user);
@@ -15,7 +15,7 @@ const HeaderLinksComponent: React.FC = () => {
       <ul className="right">
         {!isLoggedIn(currentUser) ? (
           <li>
-            <a href={`${AUTH}/google`}>Login with google</a>
+            <a href={`${API}/auth/google`}>Login with google</a>
           </li>
         ) : (
           <HeaderLinksLoggedIn />

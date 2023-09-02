@@ -20,9 +20,10 @@ const HeaderLinksLoggedIn: React.FC = () => {
     try {
       await axiosInstance.get("/logout");
       dispatch(setCurrentUser({}));
-      router.refresh();
     } catch (error) {
-      console.log(error, "error");
+      console.log(error, "error while logging out");
+    } finally {
+      router.refresh();
     }
   };
 
